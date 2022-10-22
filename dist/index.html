@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>F# Mentorship Form in dist folder</div>
-    <form name="contact" netlify>
+    <form name="contact" onsubmit="submitForm(event)">
         <p>
           <label>Name <input type="text" name="name" /></label>
         </p>
@@ -22,5 +22,23 @@
           <button type="submit">Send</button>
         </p>
       </form>
+
+      <script>
+        function submitForm(event) {
+          event.preventDefault();
+
+          const formData = new FormData(event.target);
+          const request = new XMLHttpRequest();
+
+          var jsonData = {};
+          formData.forEach((value, key) => (jsonData[key] = value));
+
+          request.open("POST", "/.netlify/functions/hello-world");
+          request.send(JSON.stringify(jsonData));
+
+          alert("Form submitted!");
+          event.target.reset();
+        }
+      </script>
 </body>
 </html>
