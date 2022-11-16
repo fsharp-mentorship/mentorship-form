@@ -1,4 +1,7 @@
 # Local Netlify folder
 .netlify
 
+# JetBrains
+.idea
+
 node_modules
