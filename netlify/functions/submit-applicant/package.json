@@ -1,8 +1,8 @@
 {
-  "name": "hello-world",
+  "name": "submit-applicant",
   "version": "1.0.0",
-  "description": "netlify functions:create - hello world in typescript",
-  "main": "hello-world.ts",
+  "description": "netlify functions:create application in typescript",
+  "main": "submit-applicant.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
