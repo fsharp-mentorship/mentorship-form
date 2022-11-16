@@ -1,23 +1,35 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
+    <div>F# Mentorship Form</div>
+    <form id="form" name="contact" onSubmit="{() => submitForm()}">
+      <p>
+        <label>Name <input type="text" name="name" value="a"/></label>
+      </p>
+      <p>
+        <label>Email <input type="email" name="email" value="a@b.c"/></label>
+      </p>
+      <p>
+        <button type="submit">Send</button>
+      </p>
+    </form>
 `
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+document
+    .querySelector<HTMLButtonElement>('#form')!
+    .addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const form = event.target as HTMLFormElement
+
+        const formData = new FormData(form) ;
+        const request = new XMLHttpRequest();
+
+        const jsonData: Record<string, any> = {};
+        formData.forEach((value, key) => (jsonData[key] = value));
+
+        request.open('POST', '/.netlify/functions/submit-applicant');
+        request.send(JSON.stringify(jsonData));
+
+        alert("Thanks for submitting the form! We'll get back to you soon.");
+    })
