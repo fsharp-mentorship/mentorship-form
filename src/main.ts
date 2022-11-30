@@ -184,12 +184,20 @@ document
 
         const form = event.target as HTMLFormElement
 
-        const formData = new FormData(form) ;
-        const request = new XMLHttpRequest();
+        const formData = new FormData(form);
+        console.log(formData, 'formData')
 
         const jsonData: Record<string, any> = {};
-        formData.forEach((value, key) => (jsonData[key] = value));
+        formData.forEach((value, key) => {
+          if(key === 'topics' || key.startsWith('schedule_')) {
+            jsonData[key] = [...(jsonData[key] ?? []), value]
+          }
+          else {
+            jsonData[key] = value
+          }
+        });
 
+        const request = new XMLHttpRequest();
         request.open('POST', '/.netlify/functions/submit-applicant');
         request.send(JSON.stringify(jsonData));
 
