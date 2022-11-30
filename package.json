@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "serve": "cd .. && netlify functions:serve"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "typescript": "^4.6.4",

@@ -3,3 +3,6 @@ end_of_line = lf
 
 [*.ts]
 indent_size = 2
+
+[*.toml]
+indent_size = 2
