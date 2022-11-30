@@ -45,22 +45,22 @@ h1 {
 
 .logo {
   height: 6em;
-  padding: 1.5em;
   will-change: filter;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
+  filter: drop-shadow(0 0 2em #30b9dbaa);
 }
 
-.card {
-  padding: 2em;
+.header {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
 }
 
-.read-the-docs {
-  color: #888;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -75,24 +75,11 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #378bba;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 label {
@@ -153,4 +140,35 @@ input[type='checkbox'] {
 
 .time > span {
   justify-self: center;
+}
+
+button[type='submit'] {
+  align-self: center;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #4867ff;
+  }
+  button {
+    background-color: #e3e3e3;
+  }
+
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #378bbaaa);
+  }
+
+  .schedule {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  .schedule > * {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
 }

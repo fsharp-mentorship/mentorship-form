@@ -1,7 +1,10 @@
 import './style.css'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-    <div>F# Mentorship Form</div>
+    <div class="header">
+      <a href="https://fsharp.org"><img class="logo" src="./fsharp.svg" /></a>
+      <h1>F# Mentorship Application</h1>
+    </div>
     <form id="form" name="contact" onSubmit="{() => submitForm()}">
       <p>
         <label>Name</label>
