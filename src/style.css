@@ -41,7 +41,6 @@ h1 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -94,4 +93,64 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+label {
+  display: block;
+  align-self: start;
+  font-weight: bold;
+}
+
+.topics {
+  display: flex;
+  flex-direction: column;
+}
+
+.topics > * {
+  height: 2.5em;
+}
+
+.topics input {
+  margin-right: 15px;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin-left: 1em;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: auto repeat(7, 1fr);
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+}
+
+.schedule > * {
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  width: 100%;
+  text-align: center;
+}
+
+.schedule > .header > span {
+  padding: 0px 10px;
+}
+
+.schedule > .header {
+  justify-self: center;
+}
+
+.schedule > * > input {
+  margin: 0
+}
+
+.time {
+  display: grid;
+  grid-template-columns: 1fr 10px 1fr;
+  grid-gap: 3px;
+}
+
+.time > span {
+  justify-self: center;
 }
