@@ -8,11 +8,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <form id="form" name="contact" onSubmit="{() => submitForm()}">
       <p>
         <label>Name</label>
-        <input type="text" name="name" value="a"/>
+        <input type="text" name="name" value=""/>
       </p>
       <p>
         <label>Email</label>
-        <input type="email" name="email" value="a@b.c"/>
+        <input type="email" name="email" value=""/>
       </p>
       <p>
         <label>I want to be a </label>
