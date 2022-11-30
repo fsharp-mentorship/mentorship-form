@@ -1,20 +1,17 @@
 import { Handler } from '@netlify/functions'
 import { Client, Create, Collection } from 'faunadb'
 
+// @ts-ignore Unused Variable
 export const handler: Handler = async (event, context) => {
-  // const body = JSON.parse(event.body ?? "")
+  const data = JSON.parse(event.body ?? "")
 
   const client = new Client({ secret: process.env.FAUNADB_SERVER_SECRET ?? "" })
 
   await client.query(
-    Create(Collection('testing'), {data: {id: 124, success: true}} )
+    Create(Collection('testing'), {data: data} )
   )
   
   return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'hello'
-      // message: `Hello, ${JSON.parse(event.body ?? "").name}!`
-    }),
+    statusCode: 204
   }
 }
