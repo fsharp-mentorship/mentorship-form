@@ -5,22 +5,22 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <a href="https://fsharp.org"><img class="logo" src="./fsharp.svg" /></a>
       <h1>F# Mentorship Application</h1>
     </div>
-    <form id="form" name="contact" onSubmit="{() => submitForm()}">
+    <form id="form" name="contact" onSubmit="return submitForm()">
       <p>
-        <label>Name</label>
-        <input type="text" name="name" value=""/>
+        <label>Name <span class="req">*</span></label>
+        <input type="text" name="name" value="" required/>
       </p>
       <p>
-        <label>Email</label>
-        <input type="email" name="email" value=""/>
+        <label>Email <span class="req">*</span></label>
+        <input type="email" name="email" value="" required/>
       </p>
       <p>
-        <label>I want to be a </label>
-        <input type="radio" name="applicant" value="mentor"> Mentor
-        <input type="radio" name="applicant" value="mentee"> Mentee
+        <label>I want to be a <span class="req">*</span></label>
+        <label><input type="radio" name="applicant" value="mentor" required> Mentor</label>
+        <label><input type="radio" name="applicant" value="mentee"> Mentee</label>
       </p>
       <p>
-        <label>Select the topic(s) you are interested in exploring</label>
+        <label>Select the topic(s) you are interested in exploring <span class="req">*</span></label>
         <div class="topics">
           <label><input type="checkbox" name="topics" value="intro">Introduction to F#</label>
           <label><input type="checkbox" name="topics" value="deep_div">Deep dive in F#</label>
@@ -34,8 +34,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </div>
       </p>      
       <p>
-        <label>What is your UTC offset?</label>
-        <select>
+        <label>What is your UTC offset? <span class="req">*</span></label>
+        <select required>
+          <option disabled selected value> -- Select an Offset -- </option>
           <option value="-12" name="utc">UTC-12</option>
           <option value="-11" name="utc">UTC-11</option>
           <option value="-10" name="utc">UTC-10</option>
@@ -48,7 +49,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <option value="-3" name="utc">UTC-3</option>
           <option value="-2" name="utc">UTC-2</option>
           <option value="-1" name="utc">UTC-1</option>
-          <option name="utc" value="0" selected>UTC</option>
+          <option name="utc" value="0">UTC</option>
           <option value="1" name="utc">UTC+1</option>
           <option value="2" name="utc">UTC+2</option>
           <option value="3" name="utc">UTC+3</option>
@@ -64,7 +65,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </select>    
       </p>
       <p>
-        <label>Select availability in your <strong>local</strong> time</label>
+        <label>Select availability in your <strong>local</strong> time <span class="req">*</span></label>
         <div class="schedule">
           <div class="header"></div>
           <div class="header"><span>Sunday</span></div>
@@ -188,7 +189,9 @@ document
         const form = event.target as HTMLFormElement
 
         const formData = new FormData(form);
-        console.log(formData, 'formData')
+
+        if(!validateForm(formData))
+          return;
 
         const jsonData: Record<string, any> = {};
         formData.forEach((value, key) => {
@@ -204,5 +207,34 @@ document
         request.open('POST', '/.netlify/functions/submit-applicant');
         request.send(JSON.stringify(jsonData));
 
-        alert("Thanks for submitting the form! We'll get back to you soon.");
+        alert("Thanks for submitting the form! We'll get back to you soon." + "\n\n" + JSON.stringify(jsonData));
     })
+
+function validateForm(formData:FormData) : boolean {
+  const getFormValues = (formData:FormData, predicate: ((name:string) => boolean)) => {
+    const values : Array<any> = []
+
+    formData.forEach((value, key) => {
+      if (predicate(key))
+        values.push(value)
+    })
+
+    return values;
+  }
+
+  const noTopicsSelected = formData.getAll('topics').length === 0
+
+  if (noTopicsSelected) {
+    alert("Please select at least one topic");
+    return false;
+  }
+
+  const noSchedulesSelected = getFormValues(formData, key => key.startsWith('schedule_')).length === 0
+
+  if (noSchedulesSelected) {
+    alert("Please select at least one availability in your local time");
+    return false;
+  }
+
+  return true;
+}

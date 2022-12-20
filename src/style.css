@@ -106,6 +106,26 @@ input[type='checkbox'] {
   margin-left: 1em;
 }
 
+input:invalid:focus {
+  box-shadow: unset;
+}
+
+input.checked:invalid {
+  box-shadow: 0px 0px 2px 1px red;
+}
+
+input:invalid {
+  box-shadow: 0px 0px 2px 1px red;
+}
+
+select.checked:invalid {
+  box-shadow: 0px 0px 2px 1px red;
+}
+
+select:invalid {
+  box-shadow: 0px 0px 2px 1px red;
+}
+
 .schedule {
   display: grid;
   grid-template-columns: auto repeat(7, 1fr);
@@ -171,4 +191,8 @@ button[type='submit'] {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
   }
+}
+
+.req {
+  color: hsl(0, 100%, 40%);
 }
