@@ -181,8 +181,44 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </form>
 `
 
+
+
 document
-    .querySelector<HTMLButtonElement>('#form')!
+  .querySelectorAll<HTMLInputElement>('.topics input')!
+  .forEach(el => {
+    el.addEventListener('change', function (_) {
+      const formData = getFormData();
+      const scheduleTable = document.querySelector('.topics')!;
+      if (validateTopics(formData)) {
+        scheduleTable.classList.remove('invalid')
+      }
+      else {
+        scheduleTable.classList.add('invalid')
+      }
+    })
+  })
+
+document.querySelector('.topics')!.classList.add('invalid')
+
+document
+  .querySelectorAll<HTMLInputElement>('.schedule input')!
+  .forEach(el => {
+    el.addEventListener('change', function (_) {
+      const formData = getFormData();
+      const scheduleTable = document.querySelector('.schedule')!;
+      if (validateSchedules(formData)) {
+        scheduleTable.classList.remove('invalid')
+      }
+      else {
+        scheduleTable.classList.add('invalid')
+      }
+    })
+  })
+
+document.querySelector('.schedule')!.classList.add('invalid')
+
+document
+    .querySelector<HTMLFormElement>('#form')!
     .addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -190,7 +226,7 @@ document
 
         const formData = new FormData(form);
 
-        if(!validateForm(formData))
+        if(!validateGroupSelections(formData))
           return;
 
         const jsonData: Record<string, any> = {};
@@ -207,32 +243,54 @@ document
         request.open('POST', '/.netlify/functions/submit-applicant');
         request.send(JSON.stringify(jsonData));
 
-        alert("Thanks for submitting the form! We'll get back to you soon." + "\n\n" + JSON.stringify(jsonData));
+        alert("Thanks for submitting the form! We'll get back to you soon.");
     })
 
-function validateForm(formData:FormData) : boolean {
-  const getFormValues = (formData:FormData, predicate: ((name:string) => boolean)) => {
+function getFormData() : FormData {
+  const form = document.querySelector<HTMLFormElement>('#form')!
+  return new FormData(form);
+}
+
+function validateGroupSelections(formData:FormData) : boolean {
+  if (!validateTopics(formData)) {
+    alert("Please select at least one topic");
+    return false;
+  }
+
+  if (!validateSchedules(formData)) {
+    alert("Please select at least one availability in your local time");
+    return false;
+  }
+
+  return true;
+}
+
+function validateTopics(formData:FormData) : boolean {
+  const noTopicsSelected = formData.getAll('topics').length === 0
+
+  if (noTopicsSelected) {
+    return false;
+  }
+
+  return true;
+}
+
+
+function validateSchedules(formData:FormData) : boolean {
+  const getFormScheduleValues = (formData:FormData) => {
     const values : Array<any> = []
 
     formData.forEach((value, key) => {
-      if (predicate(key))
+      if (key.startsWith('schedule_'))
         values.push(value)
     })
 
     return values;
   }
 
-  const noTopicsSelected = formData.getAll('topics').length === 0
-
-  if (noTopicsSelected) {
-    alert("Please select at least one topic");
-    return false;
-  }
-
-  const noSchedulesSelected = getFormValues(formData, key => key.startsWith('schedule_')).length === 0
+  const noSchedulesSelected = getFormScheduleValues(formData).length === 0
 
   if (noSchedulesSelected) {
-    alert("Please select at least one availability in your local time");
     return false;
   }
 

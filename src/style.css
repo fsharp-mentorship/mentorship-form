@@ -118,12 +118,12 @@ input:invalid {
   box-shadow: 0px 0px 2px 1px red;
 }
 
-select.checked:invalid {
+select.checked:invalid, select:invalid, .topics.invalid {
   box-shadow: 0px 0px 2px 1px red;
 }
 
-select:invalid {
-  box-shadow: 0px 0px 2px 1px red;
+.schedule.invalid {
+  box-shadow: 0px 0px 2px 2px red;
 }
 
 .schedule {
