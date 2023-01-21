@@ -16,26 +16,31 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </p>
       <p>
         <label>I want to be a <span class="req">*</span></label>
-        <label><input type="radio" name="applicant" value="mentor" required> Mentor</label>
-        <label><input type="radio" name="applicant" value="mentee"> Mentee</label>
+        <label><input type="radio" name="applicant_type" value="mentor" required> Mentor</label>
+        <label><input type="radio" name="applicant_type" value="mentee"> Mentee</label>
       </p>
       <p>
         <label>Select the topic(s) you are interested in exploring <span class="req">*</span></label>
         <div class="topics">
+        
+        
           <label><input type="checkbox" name="topics" value="intro">Introduction to F#</label>
           <label><input type="checkbox" name="topics" value="deep_div">Deep dive in F#</label>
           <label><input type="checkbox" name="topics" value="web">Distributed system / web development</label>
           <label><input type="checkbox" name="topics" value="ml">Machine learning / data science</label>
           <label><input type="checkbox" name="topics" value="game_dev">Game development</label>
-          <label><input type="checkbox" name="topics" value="scripting">Scripting/DevOps</label>
+          <label><input type="checkbox" name="topics" value="devops">DevOps/Scripting</label>
           <label><input type="checkbox" name="topics" value="open_source">Contribute to an open-source project</label>
           <label><input type="checkbox" name="topics" value="compiler">Contribute to the compiler</label>
+          <label><input type="checkbox" name="topics" value="mobile">Mobile Development</label>
+          <label><input type="checkbox" name="topics" value="meta">Meta Programming</label>
+          <label><input type="checkbox" name="topics" value="domain_modelling">Domain Modelling</label>
           <label><input type="checkbox" name="topics" value="up_for_anything">Up for anything</label>
         </div>
       </p>      
       <p>
         <label>What is your UTC offset? <span class="req">*</span></label>
-        <select required name="utc">
+        <select required name="utc_offset">
           <option disabled selected value> -- Select an Offset -- </option>
           <option value="-12">UTC-12</option>
           <option value="-11">UTC-11</option>
@@ -62,7 +67,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <option value="10">UTC+10</option>
           <option value="11">UTC+11</option>
           <option value="12">UTC+12</option>
-        </select>    
+        </select>
       </p>
       <p>
         <label>Select availability in your <strong>local</strong> time <span class="req">*</span></label>
