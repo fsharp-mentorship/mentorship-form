@@ -88,6 +88,10 @@ label {
   font-weight: bold;
 }
 
+label > .example {
+  font-weight: normal;
+}
+
 .topics {
   display: flex;
   flex-direction: column;

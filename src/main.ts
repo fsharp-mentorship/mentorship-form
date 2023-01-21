@@ -15,11 +15,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <input type="email" name="email" value="" required/>
       </p>
       <p>
-        <label>Slack (<a href="https://fsharp.slack.com">https://fsharp.slack.com</a>)</label>
+        <label>Slack <span class="example">(<a href="https://fsharp.slack.com">https://fsharp.slack.com</a>, ex. @username)</span></label>
         <input type="text" name="slack_name"/>
       </p>
       <p>
-        <label>Discord</label>
+        <label>Discord <span class="example">(ex. user#1234)</span></label>
         <input type="text" name="discord_name"/>
       </p>
       <p>
