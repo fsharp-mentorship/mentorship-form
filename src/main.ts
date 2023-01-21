@@ -15,6 +15,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <input type="email" name="email" value="" required/>
       </p>
       <p>
+        <label>Slack (<a href="https://fsharp.slack.com">https://fsharp.slack.com</a>)</label>
+        <input type="text" name="slack_name"/>
+      </p>
+      <p>
+        <label>Discord</label>
+        <input type="text" name="discord_name"/>
+      </p>
+      <p>
         <label>I want to be a <span class="req">*</span></label>
         <label><input type="radio" name="applicant_type" value="mentor" required> Mentor</label>
         <label><input type="radio" name="applicant_type" value="mentee"> Mentee</label>
@@ -22,8 +30,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <p>
         <label>Select the topic(s) you are interested in exploring <span class="req">*</span></label>
         <div class="topics">
-        
-        
           <label><input type="checkbox" name="topics" value="intro">Introduction to F#</label>
           <label><input type="checkbox" name="topics" value="deep_dive">Deep dive in F#</label>
           <label><input type="checkbox" name="topics" value="web">Distributed system / web development</label>
