@@ -25,7 +25,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         
         
           <label><input type="checkbox" name="topics" value="intro">Introduction to F#</label>
-          <label><input type="checkbox" name="topics" value="deep_div">Deep dive in F#</label>
+          <label><input type="checkbox" name="topics" value="deep_dive">Deep dive in F#</label>
           <label><input type="checkbox" name="topics" value="web">Distributed system / web development</label>
           <label><input type="checkbox" name="topics" value="ml">Machine learning / data science</label>
           <label><input type="checkbox" name="topics" value="game_dev">Game development</label>
