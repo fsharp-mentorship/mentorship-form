@@ -35,33 +35,33 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </p>      
       <p>
         <label>What is your UTC offset? <span class="req">*</span></label>
-        <select required>
+        <select required name="utc">
           <option disabled selected value> -- Select an Offset -- </option>
-          <option value="-12" name="utc">UTC-12</option>
-          <option value="-11" name="utc">UTC-11</option>
-          <option value="-10" name="utc">UTC-10</option>
-          <option value="-9" name="utc">UTC-9</option>
-          <option value="-8" name="utc">UTC-8</option>
-          <option value="-7" name="utc">UTC-7</option>
-          <option value="-6" name="utc">UTC-6</option>
-          <option value="-5" name="utc">UTC-5</option>
-          <option value="-4" name="utc">UTC-4</option>
-          <option value="-3" name="utc">UTC-3</option>
-          <option value="-2" name="utc">UTC-2</option>
-          <option value="-1" name="utc">UTC-1</option>
-          <option name="utc" value="0">UTC</option>
-          <option value="1" name="utc">UTC+1</option>
-          <option value="2" name="utc">UTC+2</option>
-          <option value="3" name="utc">UTC+3</option>
-          <option value="4" name="utc">UTC+4</option>
-          <option value="5" name="utc">UTC+5</option>
-          <option value="6" name="utc">UTC+6</option>
-          <option value="7" name="utc">UTC+7</option>
-          <option value="8" name="utc">UTC+8</option>
-          <option value="9" name="utc">UTC+9</option>
-          <option value="10" name="utc">UTC+10</option>
-          <option value="11" name="utc">UTC+11</option>
-          <option value="12" name="utc">UTC+12</option>
+          <option value="-12">UTC-12</option>
+          <option value="-11">UTC-11</option>
+          <option value="-10">UTC-10</option>
+          <option value="-9">UTC-9</option>
+          <option value="-8">UTC-8</option>
+          <option value="-7">UTC-7</option>
+          <option value="-6">UTC-6</option>
+          <option value="-5">UTC-5</option>
+          <option value="-4">UTC-4</option>
+          <option value="-3">UTC-3</option>
+          <option value="-2">UTC-2</option>
+          <option value="-1">UTC-1</option>
+          <option value="0">UTC</option>
+          <option value="1">UTC+1</option>
+          <option value="2">UTC+2</option>
+          <option value="3">UTC+3</option>
+          <option value="4">UTC+4</option>
+          <option value="5">UTC+5</option>
+          <option value="6">UTC+6</option>
+          <option value="7">UTC+7</option>
+          <option value="8">UTC+8</option>
+          <option value="9">UTC+9</option>
+          <option value="10">UTC+10</option>
+          <option value="11">UTC+11</option>
+          <option value="12">UTC+12</option>
         </select>    
       </p>
       <p>
