@@ -173,6 +173,20 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <label><input type="checkbox" name="schedule_3_am" value="thursday"></label>
           <label><input type="checkbox" name="schedule_3_am" value="friday"></label>
           <label><input type="checkbox" name="schedule_3_am" value="saturday"></label>
+          <div class="header">
+            <span class="time">
+              <span>6 AM</span>
+              <span>-</span>
+              <span>9 AM</span>
+            </span>
+          </div>
+          <label><input type="checkbox" name="schedule_6_am" value="sunday"></label>
+          <label><input type="checkbox" name="schedule_6_am" value="monday"></label>
+          <label><input type="checkbox" name="schedule_6_am" value="tuesday"></label>
+          <label><input type="checkbox" name="schedule_6_am" value="wednesday"></label>
+          <label><input type="checkbox" name="schedule_6_am" value="thursday"></label>
+          <label><input type="checkbox" name="schedule_6_am" value="friday"></label>
+          <label><input type="checkbox" name="schedule_6_am" value="saturday"></label>
         </div>
       </p>
       <p>
@@ -180,8 +194,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </p>
     </form>
 `
-
-
 
 document
   .querySelectorAll<HTMLInputElement>('.topics input')!
